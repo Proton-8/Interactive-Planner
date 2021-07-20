@@ -7,29 +7,11 @@ function updateTime (){
 
     clock.textContent = dayTime;
     }
-    let now = moment().format('LLL');
+    let now = moment().format('LLLL');
 
 $('#currentDay').text(now);
 
-$input = $(`<textarea class = "col" id='inputText$(x)' type='text' name='userInput'></textarea>`)
-$row = $(`<div class= "row">`)
-$hour = $(`<div class = "hour "></div>`)
 
-// ---------------
-
-
-$('.container').append($row)
-$($row).append($hour)
-hourNow = moment().format('HH')
-$timeBlock = x
-if($timeBlock == hourNow){
-console.log ('working so far')
-    $input.addClass('present')
-} else if ($timeBlock < hourNow){
-    $input.addClass('past')
-} else {
-    $input.addClass('future')
-}
 
 
 
