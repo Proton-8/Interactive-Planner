@@ -1,5 +1,4 @@
 
-
 const clock = document.getElementById('clock');
 function updateTime (){
     const now = moment();
@@ -7,12 +6,18 @@ function updateTime (){
 
     clock.textContent = dayTime;
     }
-let now = moment().format('dddd, MMMM Do YYYY, hh:mm');
+    let now = moment().format('LLL');
+
 $('#currentDay').text(now);
-$('currentDay').append.text(dayTime);
+
 
 $row = $(`<div class= "row">`)
+$hour = $(`<div class = "hour "></div>`)
+
+// ---------------
 
 
+$('.container').append($row)
+$($row).append($hour)
 function hover(){
 }
