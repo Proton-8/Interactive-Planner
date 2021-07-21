@@ -16,12 +16,7 @@ The following is included in this project:
 </p>
 
 
-
-
-
-
-<h3> NOTE:   </h3>
-<br>
+<br> ----------------------------------------------------------->
 
 
 
