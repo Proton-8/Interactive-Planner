@@ -22,7 +22,7 @@ The following is included in this project:
 
 <h2>  EXAMPLE of the final product in use: </h2><br>
 
-<img src=" .gif" alt="Day Planner DEMO GIF">;
+<img src="Planner Demo.gif" alt="Day Planner DEMO GIF">;
 
 
 ### My Contact Info:
