@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 
-  // inserts the local time and day data
+  // inserts the local time and day data using MOMENT
   const clock = document.getElementById('clock');
 
   function updateTime() {
@@ -20,6 +20,8 @@ $(document).ready(function () {
     //set hours from 8 to 6pm 
     for (x = 8; x <= 18; x++) {
 
+      // create save button with index for each line(for local storage) and a regular save icon from Font Awesome
+      let saveButton = $(`<button class = "saveBtn col-2 col-m-2 far fa-save" data-id='${x}'></button>`)
       // start by creating the base row
       let row = $(`<div class= "row">`)
       // add the hour slot
@@ -27,24 +29,23 @@ $(document).ready(function () {
       // for each line per index 'x', display the time in AM/PM per 'moment' documentation
       $hour.text(moment(x, 'hh').format('LT'))
       // create input area with index location
-      $input = $(`<textarea class = "col" id='inputText${x}' type='text' name='userInput'></textarea>`)
+      $input = $(`<textarea class="col" id='inputText${x}' type='text' name='userInput'></textarea>`)
       $input.text = (localStorage.getItem(x))
-      // create save button with index for each line(for local storage) and a regular save icon from Font Awesome
-      let saveButton = $(`<button class = "saveBtn col-2 col-m-2 far fa-save" data-id='${x}'></button>`)
-
-      // create the main page in two lines :-)
-      $('.container').append(row);
-      $(row).append($hour, $input, saveButton);
-
+        
 
       // code to save input into local storage
       $('.saveBtn').on('click', function () {
         let notes = $(this).siblings().eq(1).val();
         let timeSlot = $(this).data("id");
         localStorage.setItem(timeSlot, notes);
-
+       // localStorage.getItem(timeSlot, notes);
       })
-      // code to color each hour slot
+     // create the main page in two lines :-)
+      $('.container').append(row);
+      $(row).append($hour, $input, $input.text, saveButton);
+
+
+      // code to color(adding class) for each hour slot using basic if statements
       if (x < moment().format('HH')) {
         $input.addClass('past')
       } else if (x > moment().format('HH')) {
@@ -52,45 +53,20 @@ $(document).ready(function () {
       } else {
         $input.addClass('present')
       }
+      // deided not to use-------------------
+ // if starting the loop, it will get the data in local storage 
+      //  const timeLane = localStorage.getItem(x)
+      //   if (timeLane !== "") {
 
+      //     //localStorage.getItem(  )
+      //   }
+      //  console.log(x)
+      //  console.log(timeLane)
+      
 
     }
-
+       // repeats for all 10 hr slots
   }
+  // run the 'main' function of the code
   main()
 });
-
-// reference code only -------------------
-
-//$('.tr').append(`<td class='td'>${y}</td>`)
-// $('.tr').append(eventRow)
-/* <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table> */
